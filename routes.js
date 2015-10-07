@@ -1,12 +1,12 @@
 var directionDisplay;
 var directionsService = new google.maps.DirectionsService();
 function initialize() {
-  var latlng = new google.maps.LatLng(4.609841, -74.086834);
+  var latlng = new google.maps.LatLng(4.709661, -74.071899);
   // set direction render options
   var rendererOptions = { draggable: true };
   directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
   var myOptions = {
-    zoom: 14,
+    zoom: 13,
     center: latlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControl: false
@@ -25,7 +25,7 @@ function calcRoute() {
   var via2 = $("#routeVia2").val();
   var via3 = $("#routeVia3").val();
 
-  var end = "4.655628, -74.062558"; // endpoint is a geolocation
+  var end = $("#routeEnd").val(); // endpoint is a geolocation
   var waypoints = []; // init an empty waypoints array
   if (via != '') {
     waypoints.push({
@@ -60,7 +60,7 @@ function calcRoute() {
     } else {
       // alert an error message when the route could nog be calculated.
       if (status == 'ZERO_RESULTS') {
-        alert('No route could be found between the origin and destination.');
+        alert('No se encontro una ruta entre los puntos de interes.');
       } else if (status == 'UNKNOWN_ERROR') {
         alert('A directions request could not be processed due to a server error. The request may succeed if you try again.');
       } else if (status == 'REQUEST_DENIED') {
